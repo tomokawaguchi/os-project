@@ -1,0 +1,10 @@
+@use "../partials/mixin" as *;
+
+.nav__list {
+	@include resetListStylings;
+	@include displayFlex(unset, unset);
+
+	&__item {
+		margin: 15px;
+	}
+}

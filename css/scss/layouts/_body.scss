@@ -1,0 +1,17 @@
+@use "../partials/mixin" as *;
+
+body {
+	font-family: sans-serif;
+}
+
+main {
+	@include displayFlex(center, center);
+	height: 100vh;
+}
+
+// Globally shared class
+.custom-icon {
+	font-family: "fontello";
+	font-style: normal;
+	font-weight: normal;
+}

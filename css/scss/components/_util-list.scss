@@ -1,0 +1,15 @@
+@use "../partials/mixin" as *;
+
+.util-list {
+	@include resetListStylings;
+	@include displayFlex(flex-end, unset);
+	margin-right: 15px;
+
+	&__item {
+		margin: 7px;
+
+		.custom-icon {
+			font-size: 20px;
+		}
+	}
+}
