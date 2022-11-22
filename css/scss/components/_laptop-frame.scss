@@ -24,6 +24,15 @@
 		background-size: cover;
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
+
+		@include mediaQuery("max", 1440px) {
+			width: 973px;
+			height: 617px;
+		}
+		@include mediaQuery("max", 1140px) {
+			width: 778px;
+			height: 493px;
+		}
 	}
 }
 
@@ -54,5 +63,12 @@
 
 	&:after {
 		right: 100px;
+	}
+
+	@include mediaQuery("max", 1440px) {
+		width: 1110px;
+	}
+	@include mediaQuery("max", 1140px) {
+		width: 888px;
 	}
 }

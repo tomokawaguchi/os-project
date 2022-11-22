@@ -373,6 +373,18 @@ template {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+@media only screen and (max-width: 1440px) {
+  .mac-screen__inner {
+    width: 973px;
+    height: 617px;
+  }
+}
+@media only screen and (max-width: 1140px) {
+  .mac-screen__inner {
+    width: 778px;
+    height: 493px;
+  }
+}
 
 .mac-base {
   position: relative;
@@ -398,7 +410,21 @@ template {
 .mac-base:after {
   right: 100px;
 }
+@media only screen and (max-width: 1440px) {
+  .mac-base {
+    width: 1110px;
+  }
+}
+@media only screen and (max-width: 1140px) {
+  .mac-base {
+    width: 888px;
+  }
+}
 
+.nav {
+  height: 100%;
+  margin-left: 15px;
+}
 .nav__list {
   list-style: none;
   padding: 0;
@@ -409,10 +435,20 @@ template {
   display: -ms-flexbox;
   display: -webkit-flex;
   justify-content: unset;
-  align-items: unset;
+  align-items: center;
+  height: 100%;
 }
 .nav__list__item {
-  margin: 15px;
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: unset;
+  align-items: center;
+  height: 100%;
+  padding: 0 15px;
+  cursor: pointer;
 }
 
 .util-list {
@@ -438,6 +474,21 @@ template {
 body {
   font-family: sans-serif;
 }
+body .notice-box {
+  display: none;
+}
+@media only screen and (max-width: 900px) {
+  body .notice-box {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+}
 
 main {
   display: flex;
@@ -448,6 +499,11 @@ main {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+@media only screen and (max-width: 900px) {
+  main {
+    display: none;
+  }
 }
 
 .custom-icon {
