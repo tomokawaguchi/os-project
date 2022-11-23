@@ -4,4 +4,13 @@
 
 //******************** Components ********************//
 
+@use "./scss/components/laptop-frame";
+@use "./scss/components/nav";
+@use "./scss/components/util-list";
+@use "./scss/components/app-list";
+
 //******************** Layouts ********************//
+
+@use "./scss/layouts/body";
+@use "./scss/layouts/header";
+@use "./scss/layouts/main-screen";

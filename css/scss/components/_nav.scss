@@ -1,0 +1,26 @@
+@use "../partials/mixin" as *;
+
+.nav {
+	height: 100%;
+	margin-left: 15px;
+
+	&__list {
+		@include resetListStylings;
+		@include displayFlex(unset, center);
+		height: 100%;
+
+		&__item {
+			@include displayFlex(unset, center);
+			height: 100%;
+			padding: 0 15px;
+			cursor: pointer;
+
+			// @include onHoverFocus {
+			// 	@include transitionEaseInOut(0.2s);
+			// 	background-color: #e5e5e5;
+			// 	border-radius: 4px;
+			// 	opacity: 0.9;
+			// }
+		}
+	}
+}

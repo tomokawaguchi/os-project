@@ -1,0 +1,32 @@
+@use "../partials/mixin" as *;
+
+body {
+	font-family: sans-serif;
+
+	.notice-box {
+		display: none;
+	}
+
+	@include mediaQuery("max", 900px) {
+		.notice-box {
+			@include displayFlex(center, center);
+			height: 100vh;
+		}
+	}
+}
+
+main {
+	@include displayFlex(center, center);
+	height: 100vh;
+
+	@include mediaQuery("max", 900px) {
+		display: none;
+	}
+}
+
+// Globally shared class
+.custom-icon {
+	font-family: "fontello";
+	font-style: normal;
+	font-weight: normal;
+}
