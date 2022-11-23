@@ -2,21 +2,51 @@
 
 .util-list {
 	@include resetListStylings;
-	@include displayFlex(flex-end, unset);
+	@include displayFlex(flex-end, center);
+	position: relative;
+	height: 100%;
 	margin-right: 15px;
 
 	&__item {
-		margin: 7px;
+		@include displayFlex(unset, center);
+		height: 100%;
+		padding: 0 7px;
+		cursor: pointer;
 
 		.custom-icon {
 			font-size: 20px;
+			pointer-events: none;
 		}
 
-		// @include onHoverFocus {
-		// 	@include transitionEaseInOut(0.2s);
-		// 	background-color: #e5e5e5;
-		// 	border-radius: 4px;
-		// 	opacity: 0.9;
-		// }
+		.dow,
+		.time {
+			pointer-events: none;
+		}
+
+		// Active class
+		&.active-util-list {
+			position: relative;
+
+			// For the modal
+			.util-modal {
+				@include transitionEaseInOut(0.2s);
+				@include displayFlex(unset, unset);
+				flex-direction: column;
+				position: absolute;
+				top: 30px;
+				left: -40px;
+				background-color: #dadada;
+				border-radius: 5px;
+				min-width: 200px;
+				min-height: 200px;
+			}
+
+			&.util-list__item--left {
+				.util-modal {
+					left: unset;
+					right: 0;
+				}
+			}
+		}
 	}
 }

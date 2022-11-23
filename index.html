@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./css/style.css" />
+		<script src="./js/script.js" defer></script>
 		<title>Fake Mac</title>
 	</head>
 	<body>
@@ -31,18 +32,49 @@
 
 									<!-- For the icons and time section -->
 									<ul class="util-list">
-										<li class="util-list__item"><i class="custom-icon icon-bluetooth">&#xe87d;</i></li>
-										<li class="util-list__item"><i class="custom-icon icon-battery">&#xe87b;</i></li>
-										<li class="util-list__item"><i class="custom-icon icon-wifi">&#xe87c;</i></li>
-										<li class="util-list__item util-list__item--time">
+										<li class="util-list__item">
+											<i class="custom-icon icon-bluetooth">&#xe87d;</i>
+											<div class="util-modal"></div>
+										</li>
+										<li class="util-list__item">
+											<i class="custom-icon icon-battery">&#xe87b;</i>
+											<div class="util-modal"></div>
+										</li>
+										<li class="util-list__item util-list__item--left">
+											<i class="custom-icon icon-wifi">&#xe87c;</i>
+											<div class="util-modal"></div>
+										</li>
+										<li class="util-list__item util-list__item--left util-list__item--time">
 											<span class="dow">Tue</span>
 											<span class="time">9:53</span>
 											<span class="am-pm">pm</span>
+											<div class="util-modal"></div>
 										</li>
 									</ul>
 								</div>
 							</header>
-							<div class="main-screen"></div>
+							<div class="main-screen">
+								<!-- For the app list -->
+								<div class="app-list-wrapper">
+									<ul class="app-list">
+										<li class="app-list__item" style="background-image: url(../images/icon-finder.png)">
+											<span class="app-name">Finder</span>
+										</li>
+										<li class="app-list__item" style="background-image: url(../images/icon-calender.png)">
+											<span class="app-name">Calender</span>
+										</li>
+										<li class="app-list__item" style="background-image: url(../images/icon-note.png)">
+											<span class="app-name">Notes</span>
+										</li>
+										<li class="app-list__item" style="background-image: url(../images/icon-calculator.png)">
+											<span class="app-name">Calculator</span>
+										</li>
+										<li class="app-list__item" style="background-image: url(../images/icon-terminal.png)">
+											<span class="app-name">Terminal</span>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="mac-base"></div>

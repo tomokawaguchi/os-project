@@ -56,6 +56,17 @@
 	transition: all $time ease-in-out;
 }
 
+// Visibility On/Off
+@mixin visibilityOn {
+	visibility: visible;
+	opacity: 1;
+}
+
+@mixin visibilityOff {
+	visibility: hidden;
+	opacity: 0;
+}
+
 // Button default styling reset
 // @mixin buttonReset {
 // 	border: none;
