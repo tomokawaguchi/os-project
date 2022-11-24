@@ -31,12 +31,12 @@
 }
 
 // On Hover & Focus
-// @mixin onHoverFocus {
-// 	&:hover,
-// 	&:focus {
-// 		@content;
-// 	}
-// }
+@mixin onHoverFocus {
+	&:hover,
+	&:focus {
+		@content;
+	}
+}
 
 // Media query
 @mixin mediaQuery($type, $size) {
@@ -68,8 +68,8 @@
 }
 
 // Button default styling reset
-// @mixin buttonReset {
-// 	border: none;
-// 	background-color: transparent;
-// 	padding: 0;
-// }
+@mixin buttonReset {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+}

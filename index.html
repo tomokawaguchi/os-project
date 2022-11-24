@@ -5,7 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./css/style.css" />
-		<script src="./js/script.js" defer></script>
+		<script type="module" src="./js/functions.js" defer></script>
+		<script type="module" src="./js/data.js" defer></script>
+		<script type="module" src="./js/script.js" defer></script>
 		<title>Fake Mac</title>
 	</head>
 	<body>
@@ -19,13 +21,12 @@
 									<!-- For the nav  -->
 									<nav class="nav">
 										<ul class="nav__list">
-											<li class="nav__list__item"><i class="custom-icon icon-apple">&#xf179;</i></li>
+											<li class="nav__list__item">
+												<i class="custom-icon icon-apple">&#xf179;</i>
+											</li>
 											<li class="nav__list__item">Code</li>
 											<li class="nav__list__item">File</li>
 											<li class="nav__list__item">Edit</li>
-											<li class="nav__list__item">Selection</li>
-											<li class="nav__list__item">View</li>
-											<li class="nav__list__item">Go</li>
 											<li class="nav__list__item">Help</li>
 										</ul>
 									</nav>
@@ -34,21 +35,89 @@
 									<ul class="util-list">
 										<li class="util-list__item">
 											<i class="custom-icon icon-bluetooth">&#xe87d;</i>
-											<div class="util-modal"></div>
+											<div class="list-modal list-modal--bluetooth">
+												<div class="list-modal__sec list-modal__sec--toggle">
+													<div class="modal-title-wrapper">
+														<span class="modal-title">Bluetooth</span>
+														<button class="toggle-btn">
+															<div class="circle"></div>
+														</button>
+													</div>
+												</div>
+												<div class="list-modal__sec list-modal__sec--devices">
+													<span class="list-modal__sec__title">Devices</span>
+													<ul class="devices-list">
+														<li class="devices-item">Jabra Elite Active 75t</li>
+														<li class="devices-item">WH-1000XM4</li>
+													</ul>
+												</div>
+												<div class="list-modal__sec">
+													<ul class="devices-list">
+														<li class="devices-item">Bluetooth Settings...</li>
+													</ul>
+												</div>
+											</div>
 										</li>
 										<li class="util-list__item">
 											<i class="custom-icon icon-battery">&#xe87b;</i>
-											<div class="util-modal"></div>
+											<div class="list-modal list-modal--battery">
+												<div class="list-modal__sec list-modal__sec--toggle">
+													<div class="modal-title-wrapper">
+														<span class="modal-title">Battery</span>
+														<span class="modal-title__subtext">100%</span>
+													</div>
+													<ul>
+														<li>Services Recommended</li>
+														<li>Power Source: Battery</li>
+													</ul>
+												</div>
+												<div class="list-modal__sec">
+													<ul class="devices-list">
+														<li class="devices-item">Battery Settings...</li>
+													</ul>
+												</div>
+											</div>
 										</li>
-										<li class="util-list__item util-list__item--left">
+										<li class="util-list__item">
 											<i class="custom-icon icon-wifi">&#xe87c;</i>
-											<div class="util-modal"></div>
+											<div class="list-modal list-modal--wifi">
+												<div class="list-modal__sec list-modal__sec--toggle">
+													<div class="modal-title-wrapper">
+														<span class="modal-title">Wi-Fi</span>
+														<button class="toggle-btn">
+															<div class="circle"></div>
+														</button>
+													</div>
+												</div>
+												<div class="list-modal__sec list-modal__sec--network">
+													<span class="list-modal__sec__title">Known Network</span>
+													<ul class="network-list">
+														<li class="network-item">_nlogy-01</li>
+														<li class="network-item">NOLOGY-HQ</li>
+													</ul>
+												</div>
+												<div class="list-modal__sec">
+													<ul class="network-list">
+														<li class="network-item">Wi-Fi Settings...</li>
+													</ul>
+												</div>
+											</div>
 										</li>
-										<li class="util-list__item util-list__item--left util-list__item--time">
+										<li class="util-list__item util-list__item--time">
 											<span class="dow">Tue</span>
 											<span class="time">9:53</span>
 											<span class="am-pm">pm</span>
-											<div class="util-modal"></div>
+
+											<div class="list-modal list-modal--time">
+												<ul class="notification-list">
+													<li class="notification-item">
+														<h5 class="notification-title">Updates Available</h5>
+														<p>New software is ready to be installed.</p>
+													</li>
+													<li class="notification-item"></li>
+													<li class="notification-item"></li>
+												</ul>
+											</div>
 										</li>
 									</ul>
 								</div>
