@@ -1,1 +1,1 @@
-# OS Project
+# os-project
