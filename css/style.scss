@@ -1,0 +1,18 @@
+//******************** Base ********************//
+@use "./scss/base/fonts";
+@use "./scss/base/reset";
+
+//******************** Components ********************//
+
+@use "./scss/components/laptop-frame";
+@use "./scss/components/nav";
+@use "./scss/components/util-list";
+@use "./scss/components/app-list";
+@use "./scss/components/toggle-btn";
+@use "./scss/components/notification";
+
+//******************** Layouts ********************//
+
+@use "./scss/layouts/body";
+@use "./scss/layouts/header";
+@use "./scss/layouts/main-screen";
