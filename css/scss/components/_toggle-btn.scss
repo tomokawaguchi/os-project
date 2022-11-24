@@ -1,0 +1,26 @@
+@use "../partials/mixin" as *;
+@import "../partials/animations";
+
+.toggle-btn {
+	@include buttonReset;
+	@include displayFlex(unset, unset);
+	background-color: #6e6e6e;
+	border-radius: 20px;
+	width: 37px;
+	height: 20px;
+
+	.circle {
+		display: inline-block;
+		background-color: aliceblue;
+		border-radius: 100%;
+		width: 20px;
+		height: 20px;
+		pointer-events: none;
+	}
+}
+
+// active state
+.toggleOn .toggle-btn {
+	justify-content: flex-end;
+	background-color: #8d128f;
+}

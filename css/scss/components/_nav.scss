@@ -15,12 +15,49 @@
 			padding: 0 15px;
 			cursor: pointer;
 
-			// @include onHoverFocus {
-			// 	@include transitionEaseInOut(0.2s);
-			// 	background-color: #e5e5e5;
-			// 	border-radius: 4px;
-			// 	opacity: 0.9;
-			// }
+			.custom-icon {
+				pointer-events: none;
+			}
+
+			// Active class
+			&.active-list {
+				position: relative;
+
+				// For the modal
+				.list-modal {
+					@include transitionEaseInOut(0.2s);
+					@include displayFlex(unset, unset);
+					flex-direction: column;
+					position: absolute;
+					top: 30px;
+					left: 0;
+					background-color: #dadada;
+					border-radius: 5px;
+					min-width: 250px;
+					min-height: 200px;
+					z-index: 1;
+
+					&__list {
+						@include resetListStylings;
+						@include displayFlex(center, unset);
+						flex-direction: column;
+						padding: 5px;
+					}
+
+					&__item {
+						font-size: 14px;
+						padding: 7px;
+						margin: 0 5px;
+						border-radius: 5px;
+						cursor: pointer;
+
+						@include onHoverFocus {
+							color: white;
+							background-color: #8d128f;
+						}
+					}
+				}
+			}
 		}
 	}
 }

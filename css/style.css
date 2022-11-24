@@ -450,6 +450,56 @@ template {
   padding: 0 15px;
   cursor: pointer;
 }
+.nav__list__item .custom-icon {
+  pointer-events: none;
+}
+.nav__list__item.active-list {
+  position: relative;
+}
+.nav__list__item.active-list .list-modal {
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: unset;
+  align-items: unset;
+  flex-direction: column;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #dadada;
+  border-radius: 5px;
+  min-width: 250px;
+  min-height: 200px;
+  z-index: 1;
+}
+.nav__list__item.active-list .list-modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: unset;
+  flex-direction: column;
+  padding: 5px;
+}
+.nav__list__item.active-list .list-modal__item {
+  font-size: 14px;
+  padding: 7px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.nav__list__item.active-list .list-modal__item:hover, .nav__list__item.active-list .list-modal__item:focus {
+  color: white;
+  background-color: #8d128f;
+}
 
 .util-list {
   list-style: none;
@@ -478,6 +528,16 @@ template {
   padding: 0 7px;
   cursor: pointer;
 }
+.util-list__item .list-modal {
+  display: none;
+}
+.util-list__item .list-modal--time {
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  width: 0;
+  transform: translateX(30px);
+}
 .util-list__item .custom-icon {
   font-size: 20px;
   pointer-events: none;
@@ -486,10 +546,10 @@ template {
 .util-list__item .time {
   pointer-events: none;
 }
-.util-list__item.active-util-list {
+.util-list__item.active-list {
   position: relative;
 }
-.util-list__item.active-util-list .util-modal {
+.util-list__item.active-list .list-modal {
   transition: all 0.2s ease-in-out;
   display: flex;
   display: -webkit-box;
@@ -501,22 +561,97 @@ template {
   flex-direction: column;
   position: absolute;
   top: 30px;
-  left: -40px;
+  left: -60px;
   background-color: #dadada;
   border-radius: 5px;
   min-width: 200px;
-  min-height: 200px;
+  min-height: 100px;
+  padding: 10px;
+  z-index: 1;
 }
-.util-list__item.active-util-list.util-list__item--left .util-modal {
+.util-list__item.active-list .list-modal__sec {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: unset;
+  flex-direction: column;
+  position: relative;
+  padding: 10px 0;
+}
+.util-list__item.active-list .list-modal__sec:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ababab;
+  height: 1px;
+}
+.util-list__item.active-list .list-modal__sec ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.util-list__item.active-list .list-modal__sec ul li {
+  transition: all 0.2s ease-in-out;
+  margin: 5px 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.util-list__item.active-list .list-modal__sec ul li:hover, .util-list__item.active-list .list-modal__sec ul li:focus {
+  background-color: #c8c8c8;
+}
+.util-list__item.active-list .list-modal__sec .modal-title-wrapper {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: unset;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.util-list__item.active-list .list-modal__sec .modal-title {
+  font-weight: 600;
+}
+.util-list__item.active-list .list-modal__sec--toggle {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: unset;
+}
+.util-list__item.active-list .list-modal__sec__title {
+  font-size: 14px;
+}
+.util-list__item.active-list .list-modal__sec:last-child:after {
+  display: none;
+}
+.util-list__item.active-list .list-modal--wifi {
+  left: unset;
+  right: -40px;
+}
+.util-list__item.active-list .list-modal--time {
+  visibility: visible;
+  opacity: 1;
+  background-color: transparent;
   left: unset;
   right: 0;
+  min-width: 300px;
+  width: 100%;
+  transform: translateX(0);
+}
+.util-list__item.active-list .list-modal.toggleOn .list-modal__sec--devices,
+.util-list__item.active-list .list-modal.toggleOn .list-modal__sec--network {
+  display: none;
 }
 
-@keyframes showInDelay {
-  0% {
-    transform: translateY(0);
-  }
-}
 .app-list-wrapper {
   display: flex;
   display: -webkit-box;
@@ -614,8 +749,84 @@ template {
   opacity: 1;
 }
 
+.toggle-btn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: unset;
+  align-items: unset;
+  background-color: #6e6e6e;
+  border-radius: 20px;
+  width: 37px;
+  height: 20px;
+}
+.toggle-btn .circle {
+  display: inline-block;
+  background-color: aliceblue;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.toggleOn .toggle-btn {
+  justify-content: flex-end;
+  background-color: #8d128f;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.notification-list .notification-item {
+  position: relative;
+  background-color: rgba(218, 218, 218, 0.6);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.4);
+}
+.notification-list .notification-item .notification-title {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.notification-list .notification-item p {
+  font-size: 14px;
+}
+.notification-list .notification-item:nth-of-type(2) {
+  position: absolute;
+  background-color: rgba(218, 218, 218, 0.6);
+  right: 0;
+  left: 0;
+  bottom: -7px;
+  width: 90%;
+  height: 7px;
+  padding: 0;
+  z-index: -1;
+  margin: 0 auto;
+}
+.notification-list .notification-item:nth-of-type(3) {
+  position: absolute;
+  background-color: rgba(218, 218, 218, 0.6);
+  right: 0;
+  left: 0;
+  bottom: -14px;
+  width: 82%;
+  height: 7px;
+  padding: 0;
+  z-index: -2;
+  margin: 0 auto;
+}
+
 body {
   font-family: sans-serif;
+  font-size: 15px;
 }
 body .notice-box {
   display: none;
