@@ -117,3 +117,32 @@ screenBody.addEventListener("click", () => {
 		currentActiveUtilItem.classList.remove("active-list");
 	}
 });
+
+// For HttpRequest
+const handleXMLHttpRequest = (screen_wrapper, innerFile, callback) => {
+	const xml = new XMLHttpRequest();
+	xml.addEventListener("load", screenRequest);
+	xml.addEventListener("loadend", handleValuesScreenEvents);
+	xml.open("GET", innerFile);
+	xml.send();
+
+	function screenRequest() {
+		screen_wrapper.innerHTML = this.response;
+	}
+	function handleValuesScreenEvents() {
+		if (callback) callback();
+	}
+};
+
+// Terminal Icon trigger
+const terminalApp = document.querySelector("#terminal-app-icon");
+
+terminalApp.addEventListener("click", () => {
+	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../terminal.html");
+});
+
+document.querySelector(".app-wrapper").addEventListener("click", (event) => {
+	if (event.target.classList.contains("close-terminal")) {
+		document.querySelector(".app-wrapper").innerHTML = "";
+	}
+});
