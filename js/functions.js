@@ -1,3 +1,18 @@
+// Getting the time
+export const getTime = (parent) => {
+	const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+	let day = new Date();
+	let dayOfWeek = weekday[day.getDay()].substring(3, -1); // --> Fri
+	let minute = day.getMinutes();
+	minute = minute > 10 ? minute : `0${minute}`; // add 0 when less than 10m --> e.g. 02
+	let hours = day.getHours();
+	let amPm = hours > 11 ? "pm" : "am";
+	hours = hours > 11 ? hours - 12 : hours;
+
+	parent.innerHTML = `${dayOfWeek} ${hours}:${minute} ${amPm}`;
+};
+
 // Creating the DOM element and attach it to the specified parent node with class name
 export const createElement = (element, innerText, className, parent) => {
 	const newEl = document.createElement(element);

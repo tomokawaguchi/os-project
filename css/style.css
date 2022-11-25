@@ -545,9 +545,10 @@ template {
 	font-size: 20px;
 	pointer-events: none;
 }
-.util-list__item .dow,
-.util-list__item .time {
-	pointer-events: none;
+
+.util-list__item .live-time__wrapper {
+  display: block;
+  pointer-events: none;
 }
 .util-list__item.active-list {
 	position: relative;
@@ -957,6 +958,12 @@ main {
 .terminal-app__top--wrapper p {
 	margin: 5px;
 	font-size: 14px;
+}
+@media only screen and (max-width: 1140px) {
+  .terminal-app__top--wrapper h3,
+.terminal-app__top--wrapper p {
+    font-size: 13px;
+  }
 }
 .terminal-app #close-terminal {
 	display: flex;
