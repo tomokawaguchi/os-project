@@ -23,6 +23,10 @@
 			p {
 				margin: 5px;
 				font-size: 14px;
+
+				@include mediaQuery("max", 1140px) {
+					font-size: 13px;
+				}
 			}
 		}
 	}

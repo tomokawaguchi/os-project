@@ -1,4 +1,4 @@
-import { createElement, handleActiveClass, clearModal } from "./functions.js";
+import { getTime, createElement, handleActiveClass, clearModal } from "./functions.js";
 import { menuData } from "./data.js";
 
 const appList = document.querySelector(".app-list-wrapper");
@@ -22,6 +22,11 @@ appList.addEventListener("mouseout", () => {
 //======================
 const screenBody = document.querySelector(".mac-screen__inner");
 const utilItems = document.querySelectorAll(".util-list__item");
+const timeWrapper = document.querySelector(".live-time__wrapper");
+
+// Live time update
+// Run function every second to get the most updated time
+setInterval(getTime(timeWrapper), 1000);
 
 // Toggling util icons list active class
 utilItems.forEach((item) => {
