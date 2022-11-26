@@ -1,0 +1,68 @@
+@use "../partials/mixin" as *;
+
+.calculator-app {
+	&__inner {
+		@include displayFlex(unset, unset);
+		flex-direction: column;
+		position: relative;
+		background-color: #383838;
+		border-radius: 12px;
+	}
+
+	&__top {
+		position: relative;
+
+		#result {
+			font-size: 35px;
+			text-align: right;
+			padding: 25px 8px 8px;
+			color: #dadada;
+			font-weight: 100;
+		}
+	}
+
+	&__bottom {
+		background-color: #383838;
+		border-bottom-right-radius: 12px;
+		border-bottom-left-radius: 12px;
+
+		.buttons-wrapper {
+			display: grid;
+			grid-template-columns: repeat(4, 60px);
+			grid-template-rows: repeat(5, 50px);
+
+			button {
+				font-size: 20px;
+				color: #dadada;
+				background-color: #696969;
+				border-color: #383838;
+				border-width: thin;
+				cursor: pointer;
+			}
+
+			button:nth-of-type(4n) {
+				background-color: #ff9f0b;
+				border-right: none;
+			}
+
+			button:nth-of-type(4n + 1) {
+				border-left: none;
+			}
+
+			button:nth-of-type(1),
+			button:nth-of-type(2),
+			button:nth-of-type(3) {
+				background-color: #4c4c4c;
+			}
+
+			.large-btn {
+				grid-column: span 2;
+				border-bottom-left-radius: 12px;
+			}
+
+			button:last-of-type {
+				border-bottom-right-radius: 12px;
+			}
+		}
+	}
+}
