@@ -1,4 +1,4 @@
-import { getTime, createElement, handleActiveClass, clearModal, handleXMLHttpRequest, handleCalender } from "./functions.js";
+import { getTime, createElement, handleActiveClass, clearModal, handleXMLHttpRequest, handleCalender, handleCalculator } from "./functions.js";
 import { menuData } from "./data.js";
 
 const appList = document.querySelector(".app-list-wrapper");
@@ -144,6 +144,21 @@ const calendarApp = document.querySelector("#calendar-app-icon");
 
 calendarApp.addEventListener("click", () => {
 	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../calendar.html", handleCalender);
+});
+
+document.querySelector(".app-wrapper").addEventListener("click", (event) => {
+	if (event.target.classList.contains("close-terminal")) {
+		document.querySelector(".app-wrapper").innerHTML = "";
+	}
+});
+
+//======================
+// Calculator Icon
+//======================
+const calculatorApp = document.querySelector("#calculator-app-icon");
+
+calculatorApp.addEventListener("click", () => {
+	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../calculator.html", handleCalculator);
 });
 
 document.querySelector(".app-wrapper").addEventListener("click", (event) => {

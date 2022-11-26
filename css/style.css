@@ -1056,7 +1056,7 @@ main {
   font-size: 20px;
   margin: 0;
 }
-.calendar-app__top .buttons-wrappr button {
+.calendar-app__top .buttons-wrapper button {
   text-align: center;
   background-color: white;
   border: none;
@@ -1067,10 +1067,10 @@ main {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
-.calendar-app__top .buttons-wrappr button:not(:nth-of-type(2)) {
+.calendar-app__top .buttons-wrapper button:not(:nth-of-type(2)) {
   width: 25px;
 }
-.calendar-app__top .buttons-wrappr button:nth-of-type(2) {
+.calendar-app__top .buttons-wrapper button:nth-of-type(2) {
   width: 80px;
 }
 .calendar-app__bottom .calendar-main {
@@ -1122,4 +1122,65 @@ main {
   font-size: 13px;
   top: 5px;
   right: 5px;
+}
+
+.calculator-app__inner {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: unset;
+  align-items: unset;
+  flex-direction: column;
+  position: relative;
+  background-color: #383838;
+  border-radius: 12px;
+}
+.calculator-app__top {
+  position: relative;
+}
+.calculator-app__top #result {
+  font-size: 35px;
+  text-align: right;
+  padding: 25px 8px 8px;
+  color: #dadada;
+  font-weight: 100;
+}
+.calculator-app__bottom {
+  background-color: #383838;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.calculator-app__bottom .buttons-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: repeat(5, 50px);
+}
+.calculator-app__bottom .buttons-wrapper button {
+  font-size: 20px;
+  color: #dadada;
+  background-color: #696969;
+  border-color: #383838;
+  border-width: thin;
+  cursor: pointer;
+}
+.calculator-app__bottom .buttons-wrapper button:nth-of-type(4n) {
+  background-color: #ff9f0b;
+  border-right: none;
+}
+.calculator-app__bottom .buttons-wrapper button:nth-of-type(4n + 1) {
+  border-left: none;
+}
+.calculator-app__bottom .buttons-wrapper button:nth-of-type(1),
+.calculator-app__bottom .buttons-wrapper button:nth-of-type(2),
+.calculator-app__bottom .buttons-wrapper button:nth-of-type(3) {
+  background-color: #4c4c4c;
+}
+.calculator-app__bottom .buttons-wrapper .large-btn {
+  grid-column: span 2;
+  border-bottom-left-radius: 12px;
+}
+.calculator-app__bottom .buttons-wrapper button:last-of-type {
+  border-bottom-right-radius: 12px;
 }
