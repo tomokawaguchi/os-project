@@ -1,0 +1,107 @@
+@use "../partials/mixin" as *;
+
+.calendar-app {
+	width: 60%;
+
+	&__inner {
+		@include displayFlex(unset, unset);
+		flex-direction: column;
+		position: relative;
+		background-color: white;
+		border-radius: 5px;
+	}
+
+	&__top {
+		@include displayFlex(space-between, flex-end);
+		margin: 40px 25px 20px;
+
+		> h3 {
+			font-size: 20px;
+			margin: 0;
+		}
+
+		.buttons-wrappr {
+			button {
+				text-align: center;
+				background-color: white;
+				border: none;
+				border-radius: 4px;
+				height: 25px;
+				padding: 3px;
+				margin: 0;
+				box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+				cursor: pointer;
+			}
+
+			button:not(:nth-of-type(2)) {
+				width: 25px;
+			}
+
+			button:nth-of-type(2) {
+				width: 80px;
+			}
+		}
+	}
+
+	&__bottom {
+		.calendar-main {
+			width: 100%;
+
+			.days-row {
+				display: grid;
+				grid-template-columns: repeat(7, 1fr);
+				border-bottom: 1px solid #cccccc;
+
+				.day-of-week {
+					text-align: right;
+					padding-right: 5px;
+				}
+			}
+
+			.days-sec {
+				display: grid;
+				grid-template-columns: repeat(7, 1fr);
+				grid-template-rows: repeat(6, 45px);
+
+				.day {
+					position: relative;
+					border-bottom: 1px solid #cccccc;
+					border-right: 1px solid #cccccc;
+
+					&.today .date {
+						background-color: red;
+						padding: 2px;
+						border-radius: 10px;
+						color: white;
+					}
+				}
+
+				.day:nth-of-type(7n) {
+					border-right: unset;
+				}
+
+				.day:nth-of-type(7n - 1),
+				.day:nth-of-type(7n) {
+					background-color: #f5f5f5;
+				}
+
+				.day:nth-of-type(36),
+				.day:nth-of-type(37),
+				.day:nth-of-type(38),
+				.day:nth-of-type(39),
+				.day:nth-of-type(40),
+				.day:nth-of-type(41),
+				.day:nth-of-type(42) {
+					border-bottom: unset;
+				}
+
+				.date {
+					position: absolute;
+					font-size: 13px;
+					top: 5px;
+					right: 5px;
+				}
+			}
+		}
+	}
+}

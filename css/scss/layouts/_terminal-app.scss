@@ -31,32 +31,32 @@
 		}
 	}
 
-	#close-terminal {
-		@include displayFlex(center, center);
-		position: absolute;
-		left: 10px;
-		top: 10px;
-		background: transparent;
-		border: none;
-		background-color: #ff605c;
-		border-radius: 100%;
-		width: 16px;
-		height: 16px;
+	// #close-terminal {
+	// 	@include displayFlex(center, center);
+	// 	position: absolute;
+	// 	left: 10px;
+	// 	top: 10px;
+	// 	background: transparent;
+	// 	border: none;
+	// 	background-color: #ff605c;
+	// 	border-radius: 100%;
+	// 	width: 16px;
+	// 	height: 16px;
 
-		> span {
-			font-size: 13px;
-			width: 16px;
-			height: 16px;
-			display: none;
-			pointer-events: none;
-		}
+	// 	> span {
+	// 		font-size: 13px;
+	// 		width: 16px;
+	// 		height: 16px;
+	// 		display: none;
+	// 		pointer-events: none;
+	// 	}
 
-		@include onHoverFocus {
-			> span {
-				display: block;
-			}
-		}
-	}
+	// 	@include onHoverFocus {
+	// 		> span {
+	// 			display: block;
+	// 		}
+	// 	}
+	// }
 
 	&__code {
 		width: 100%;
