@@ -1,4 +1,4 @@
-import { getTime, createElement, handleActiveClass, clearModal } from "./functions.js";
+import { getTime, createElement, handleActiveClass, clearModal, handleXMLHttpRequest, handleCalender } from "./functions.js";
 import { menuData } from "./data.js";
 
 const appList = document.querySelector(".app-list-wrapper");
@@ -22,11 +22,10 @@ appList.addEventListener("mouseout", () => {
 //======================
 const screenBody = document.querySelector(".mac-screen__inner");
 const utilItems = document.querySelectorAll(".util-list__item");
-const timeWrapper = document.querySelector(".live-time__wrapper");
 
 // Live time update
 // Run function every second to get the most updated time
-setInterval(getTime(timeWrapper), 1000);
+setInterval(getTime, 100);
 
 // Toggling util icons list active class
 utilItems.forEach((item) => {
@@ -109,6 +108,51 @@ menuItems.forEach((item, index) => {
 });
 
 //======================
+// Terminal Icon
+//======================
+const terminalApp = document.querySelector("#terminal-app-icon");
+
+terminalApp.addEventListener("click", () => {
+	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../terminal.html");
+});
+
+document.querySelector(".app-wrapper").addEventListener("click", (event) => {
+	if (event.target.classList.contains("close-calendar")) {
+		document.querySelector(".app-wrapper").innerHTML = "";
+	}
+});
+
+//======================
+// Note Icon
+//======================
+const noteApp = document.querySelector("#note-app-icon");
+
+noteApp.addEventListener("click", () => {
+	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../note.html");
+});
+
+// document.querySelector(".note-wrapper").addEventListener("click", (event) => {
+// 	if (event.target.classList.contains("close-terminal")) {
+// 		document.querySelector(".app-wrapper").innerHTML = "";
+// 	}
+// });
+
+//======================
+// Calendar Icon
+//======================
+const calendarApp = document.querySelector("#calendar-app-icon");
+
+calendarApp.addEventListener("click", () => {
+	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../calendar.html", handleCalender);
+});
+
+document.querySelector(".app-wrapper").addEventListener("click", (event) => {
+	if (event.target.classList.contains("close-terminal")) {
+		document.querySelector(".app-wrapper").innerHTML = "";
+	}
+});
+
+//======================
 // Global
 //======================
 
@@ -120,34 +164,5 @@ screenBody.addEventListener("click", () => {
 		clearModal();
 		// Remove the active list class
 		currentActiveUtilItem.classList.remove("active-list");
-	}
-});
-
-// For HttpRequest
-const handleXMLHttpRequest = (screen_wrapper, innerFile, callback) => {
-	const xml = new XMLHttpRequest();
-	xml.addEventListener("load", screenRequest);
-	xml.addEventListener("loadend", handleValuesScreenEvents);
-	xml.open("GET", innerFile);
-	xml.send();
-
-	function screenRequest() {
-		screen_wrapper.innerHTML = this.response;
-	}
-	function handleValuesScreenEvents() {
-		if (callback) callback();
-	}
-};
-
-// Terminal Icon trigger
-const terminalApp = document.querySelector("#terminal-app-icon");
-
-terminalApp.addEventListener("click", () => {
-	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../terminal.html");
-});
-
-document.querySelector(".app-wrapper").addEventListener("click", (event) => {
-	if (event.target.classList.contains("close-terminal")) {
-		document.querySelector(".app-wrapper").innerHTML = "";
 	}
 });

@@ -10,6 +10,7 @@
 @use "./scss/components/app-list";
 @use "./scss/components/toggle-btn";
 @use "./scss/components/notification";
+@use "./scss/components/close-btn";
 
 //******************** Layouts ********************//
 
@@ -17,3 +18,4 @@
 @use "./scss/layouts/header";
 @use "./scss/layouts/main-screen";
 @use "./scss/layouts/terminal-app";
+@use "./scss/layouts/calendar-app";

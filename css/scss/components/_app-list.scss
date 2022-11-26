@@ -70,6 +70,7 @@
 		@include visibilityOn;
 		position: relative;
 		transform: translateY(-5px);
+		z-index: 4;
 
 		> .app-list__item:hover {
 			transform: scale(1.2);
