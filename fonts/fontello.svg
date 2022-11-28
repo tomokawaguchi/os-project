@@ -6,6 +6,8 @@
 <font id="fontello" horiz-adv-x="1000" >
 <font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="right-open" unicode="&#xe814;" d="M98 626l226-236q16-16 16-40 0-22-16-38l-226-236q-16-16-40-16t-40 16q-36 36 0 80l186 194-186 196q-36 44 0 80 16 16 41 16t39-16z" horiz-adv-x="340" />
+
 <glyph glyph-name="battery" unicode="&#xe87b;" d="M649 628l-599 0c-28 0-50-22-50-50l0-283c0-28 22-50 50-50l599 0c28 0 50 22 50 50l0 283c0 28-22 50-50 50z m17-333c0-10-7-17-17-17l-599 0c-9 0-17 7-17 17l0 283c0 9 8 17 17 17l599 0c10 0 17-8 17-17z m0 0m51 208l0-133c18 0 33 15 33 33l0 67c0 18-15 33-33 33z m0 0m-101 58l-533 0c-9 0-16-7-16-16l0-217c0-9 7-17 16-17l533 0c9 0 17 8 17 17l0 217c0 9-8 16-17 16z m0 0" horiz-adv-x="1000" />
 
 <glyph glyph-name="wifi" unicode="&#xe87c;" d="M2 558l68-68c169 169 442 169 610 0l68 68c-206 206-540 206-746 0z m271-271l102-101 102 101c-56 57-147 57-204 0z m-135 136l68-68c93 93 245 93 338 0l68 68c-131 130-343 130-474 0z m0 0" horiz-adv-x="1000" />

@@ -1,4 +1,6 @@
-import { getTime, createElement, handleActiveClass, clearModal, handleXMLHttpRequest, handleCalender, handleCalculator } from "./functions.js";
+import { getTime, createElement, handleActiveClass, clearModal, handleXMLHttpRequest } from "./helper.js";
+import { handleCalender } from "./calender.js";
+import { handleCalculator } from "./calculator.js";
 import { menuData } from "./data.js";
 
 const appList = document.querySelector(".app-list-wrapper");
@@ -31,6 +33,7 @@ setInterval(getTime, 100);
 utilItems.forEach((item) => {
 	item.addEventListener("click", (event) => {
 		event.stopPropagation(); // stops the move upwards of bubbling
+		clearModal();
 		const currentItem = event.target;
 
 		// Add/Remove modal active class
@@ -74,7 +77,7 @@ menuItems.forEach((item, index) => {
 		// If list-modal already exists, skip creating new one
 		if (!currentItem.contains(document.querySelector(".active-list .list-modal"))) {
 			// create a new div for modal
-			createElement("div", "", "list-modal", currentItem);
+			createElement("div", "", "list-modal modal-box", currentItem);
 		}
 
 		// Set up ul for the list of menu items
@@ -84,25 +87,29 @@ menuItems.forEach((item, index) => {
 
 		// Map data to modal
 		const submenuData = menuData[parentNavIndex].submenuList;
+
 		submenuData.forEach((submenuInfo) => {
 			const submenuTitle = submenuInfo.submenu;
-			createElement("li", submenuTitle, "list-modal__item", navSubmenuUl);
+			const hasSubSubMenu = submenuInfo.hasChildren;
+			const classList = hasSubSubMenu ? "list-modal__item hasChildren" : "list-modal__item";
 
-			// const hasSubmenu = submenuInfo.hasChildren;
-			// const subSumMenu = submenuInfo.subSubMenu; // obj
-			// const li = document.querySelector(".list-modal__item");
+			createElement("li", submenuTitle, classList, navSubmenuUl);
+			const parentLi = document.querySelectorAll(".list-modal__item.hasChildren");
 
-			// if (hasSubmenu) {
-			// 	createElement("div", "", "sub-modal", li);
-			// 	const subModal = document.querySelector(".sub-modal");
-			// 	createElement("ul", "", "sub-modal__list", subModal);
-			// 	const subSubArr = Object.entries(subSumMenu);
+			const subSubMenuData = [];
+			if (submenuInfo.subSubMenu.length > 0) {
+				subSubMenuData.push(submenuInfo.subSubMenu);
+				createElement("div", "", "sub-modal modal-box", parentLi[parentLi.length - 1]);
+				const subModal = document.querySelectorAll(".sub-modal");
+				createElement("ul", "", "sub-modal__list", subModal[subModal.length - 1]);
 
-			// 	subSubArr.forEach((each) => {
-			// 		const secTitle = each[0];
-			// 		const subSubMenusArr = each[1];
-			// 	});
-			// }
+				const subModalList = document.querySelectorAll(".sub-modal__list");
+				subSubMenuData.forEach((subSubMenu) => {
+					subSubMenu.forEach((each) => {
+						createElement("li", each, "sub-modal__item", subModalList[subModalList.length - 1]);
+					});
+				});
+			}
 		});
 	});
 });
@@ -121,21 +128,6 @@ document.querySelector(".app-wrapper").addEventListener("click", (event) => {
 		document.querySelector(".app-wrapper").innerHTML = "";
 	}
 });
-
-//======================
-// Note Icon
-//======================
-const noteApp = document.querySelector("#note-app-icon");
-
-noteApp.addEventListener("click", () => {
-	handleXMLHttpRequest(document.querySelector(".app-wrapper"), "../note.html");
-});
-
-// document.querySelector(".note-wrapper").addEventListener("click", (event) => {
-// 	if (event.target.classList.contains("close-terminal")) {
-// 		document.querySelector(".app-wrapper").innerHTML = "";
-// 	}
-// });
 
 //======================
 // Calendar Icon
@@ -172,7 +164,7 @@ document.querySelector(".app-wrapper").addEventListener("click", (event) => {
 //======================
 
 // To let user click anywhere in the mac screen to close by removing the active class
-screenBody.addEventListener("click", () => {
+screenBody.addEventListener("click", (e) => {
 	const currentActiveUtilItem = document.querySelector(".active-list");
 	if (currentActiveUtilItem) {
 		// Clear the modal context
