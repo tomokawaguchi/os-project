@@ -73,3 +73,9 @@
 	background-color: transparent;
 	padding: 0;
 }
+
+@mixin customIcon {
+	font-family: "fontello";
+	font-style: normal;
+	font-weight: normal;
+}

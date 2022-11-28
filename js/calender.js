@@ -1,70 +1,9 @@
-// Getting the time
-export const getTime = () => {
-	const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-	let day = new Date();
-	let dayOfWeek = weekday[day.getDay()].substring(3, -1); // --> Fri
-	let minute = day.getMinutes();
-	minute = minute > 10 ? minute : `0${minute}`; // add 0 when less than 10m --> e.g. 02
-	let hours = day.getHours();
-	let amPm = hours > 11 ? "pm" : "am";
-	hours = hours > 11 ? hours - 12 : hours === 0 ? `0${hours}` : hours;
-
-	const timeWrapper = document.querySelector(".live-time__wrapper");
-	timeWrapper.innerHTML = `${dayOfWeek} ${hours}:${minute} ${amPm}`;
-};
-
-// Creating the DOM element and attach it to the specified parent node with class name
-export const createElement = (element, innerText, className, parent) => {
-	const newEl = document.createElement(element);
-	if (innerText) newEl.innerText = innerText;
-	if (className) newEl.className = className;
-	if (parent) parent.appendChild(newEl);
-};
-
-// Add/Remove/move active class
-export const handleActiveClass = (elToCheck, activeClass) => {
-	if (elToCheck.classList.contains(activeClass)) {
-		elToCheck.classList.remove(activeClass);
-	} else {
-		const prevItem = document.querySelector(`.${activeClass}`);
-
-		if (prevItem) {
-			prevItem.classList.remove(activeClass);
-		}
-
-		elToCheck.classList.add(activeClass);
-	}
-};
-
-// Clearing the modal details --> removing the innerHTML
-export const clearModal = () => {
-	const navList = document.querySelector(".nav__list");
-
-	navList.querySelectorAll(".list-modal").forEach((each) => (each.innerHTML = ""));
-};
-
-// For HttpRequest
-export const handleXMLHttpRequest = (screen_wrapper, innerFile, callback) => {
-	const xml = new XMLHttpRequest();
-	xml.addEventListener("load", screenRequest);
-	xml.addEventListener("loadend", handleValuesScreenEvents);
-	xml.open("GET", innerFile);
-	xml.send();
-
-	function screenRequest() {
-		screen_wrapper.innerHTML = this.response;
-	}
-	function handleValuesScreenEvents() {
-		if (callback) callback();
-	}
-};
-
 export const handleCalender = () => {
 	const allMonthsArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let today = new Date();
 	let currentMonth = today.getMonth(); // -1
 	let currentYear = today.getFullYear();
+	let todayDetailsArr = [today.getDate(), currentMonth, currentYear];
 
 	// Update the month title
 	const showcaseMonthAndYear = () => {
@@ -121,13 +60,16 @@ export const handleCalender = () => {
 
 	// Combine all the days and populate it in HTML
 	const populateCalender = () => {
-		const allDaysArr = [checkAndRetrieveDaysBefore(), retrieveCurrentDays(), checkAndRetrieveDaysAfter()].flat(1);
-
+		const allDaysArr = [...checkAndRetrieveDaysBefore(), ...retrieveCurrentDays(), ...checkAndRetrieveDaysAfter()];
 		// Populate HTML elements for each day and append to parent wrapper
 		allDaysArr.forEach((eachDay) => {
 			const parentWrapper = document.querySelector(".days-sec");
 			const div = document.createElement("div");
 			div.className = "day";
+			// For the current day indicator class
+			if (currentMonth === todayDetailsArr[1] && currentYear === todayDetailsArr[2] && eachDay === todayDetailsArr[0]) {
+				div.className += " today";
+			}
 			const span = document.createElement("span");
 			span.className = "date";
 			const textNode = document.createTextNode(eachDay);

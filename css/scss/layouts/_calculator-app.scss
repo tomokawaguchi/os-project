@@ -18,6 +18,7 @@
 			padding: 25px 8px 8px;
 			color: #dadada;
 			font-weight: 100;
+			height: 40px;
 		}
 	}
 
@@ -35,29 +36,44 @@
 				font-size: 20px;
 				color: #dadada;
 				background-color: #696969;
-				border-color: #383838;
+				border-color: #696969;
 				border-width: thin;
 				cursor: pointer;
 			}
 
 			button:nth-of-type(4n) {
+				border-left: none;
+			}
+
+			button:nth-of-type(16),
+			button:nth-of-type(17),
+			button:nth-of-type(18) {
+				border-bottom: none;
+			}
+
+			button:nth-of-type(3),
+			button:nth-of-type(7),
+			button:nth-of-type(11),
+			button:nth-of-type(15),
+			button:nth-of-type(18) {
 				background-color: #ff9f0b;
 				border-right: none;
 			}
 
-			button:nth-of-type(4n + 1) {
-				border-left: none;
-			}
-
 			button:nth-of-type(1),
-			button:nth-of-type(2),
-			button:nth-of-type(3) {
+			button:nth-of-type(2) {
 				background-color: #4c4c4c;
 			}
 
 			.large-btn {
-				grid-column: span 2;
-				border-bottom-left-radius: 12px;
+				&--horizontal {
+					grid-column: span 2;
+
+					&--zero {
+						grid-column: 1/3;
+						border-bottom-left-radius: 12px;
+					}
+				}
 			}
 
 			button:last-of-type {
