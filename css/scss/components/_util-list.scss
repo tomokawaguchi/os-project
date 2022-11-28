@@ -1,0 +1,135 @@
+@use "../partials/mixin" as *;
+
+.util-list {
+	@include resetListStylings;
+	@include displayFlex(flex-end, center);
+	position: relative;
+	height: 100%;
+	margin-right: 15px;
+
+	&__item {
+		@include displayFlex(unset, center);
+		height: 100%;
+		padding: 0 7px;
+		cursor: pointer;
+
+		.list-modal {
+			display: none;
+
+			&--time {
+				@include visibilityOff;
+				display: flex;
+				width: 0;
+				transform: translateX(30px);
+			}
+		}
+
+		.custom-icon {
+			font-size: 20px;
+			pointer-events: none;
+		}
+
+		.live-time__wrapper {
+			display: block;
+			pointer-events: none;
+		}
+
+		// Active class
+		&.active-list {
+			position: relative;
+
+			// For the modal
+			.list-modal {
+				@include transitionEaseInOut(0.2s);
+				@include displayFlex(unset, unset);
+				flex-direction: column;
+				position: absolute;
+				top: 30px;
+				left: -60px;
+				background-color: #dadada;
+				border-radius: 5px;
+				min-width: 200px;
+				min-height: 100px;
+				padding: 10px;
+				z-index: 1;
+
+				&__sec {
+					@include displayFlex(space-between, unset);
+					flex-direction: column;
+					position: relative;
+					padding: 10px 0;
+
+					&:after {
+						content: "";
+						position: absolute;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						background-color: rgb(171, 171, 171);
+						height: 1px;
+					}
+
+					ul {
+						@include resetListStylings;
+
+						li {
+							@include transitionEaseInOut(0.2s);
+							margin: 5px 0;
+							padding: 5px 10px;
+							border-radius: 5px;
+
+							@include onHoverFocus {
+								background-color: rgb(200, 200, 200);
+							}
+						}
+					}
+
+					.modal-title-wrapper {
+						@include displayFlex(space-between, unset);
+						width: 100%;
+						margin-bottom: 5px;
+					}
+
+					.modal-title {
+						font-weight: 600;
+					}
+
+					&--toggle {
+						@include displayFlex(space-between, unset);
+					}
+
+					&__title {
+						font-size: 14px;
+					}
+				}
+
+				&__sec:last-child:after {
+					display: none;
+				}
+
+				&--wifi {
+					left: unset;
+					right: -40px;
+				}
+
+				&--time {
+					@include visibilityOn;
+					background-color: transparent;
+					left: unset;
+					right: 0;
+					min-width: 300px;
+					width: 100%;
+					transform: translateX(0);
+				}
+
+				// toggle active state
+				&.toggleOn {
+					.list-modal__sec--devices,
+					.list-modal__sec--network {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

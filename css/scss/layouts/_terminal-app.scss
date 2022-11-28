@@ -1,0 +1,95 @@
+@use "../partials/mixin" as *;
+
+.terminal-app {
+	width: 60%;
+
+	&__inner {
+		@include displayFlex(unset, unset);
+		flex-direction: column;
+		border-radius: 10px;
+	}
+
+	&__top {
+		position: relative;
+		background-color: #dadada;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+
+		&--wrapper {
+			@include displayFlex(unset, center);
+			flex-direction: column;
+
+			h3,
+			p {
+				margin: 5px;
+				font-size: 14px;
+
+				@include mediaQuery("max", 1140px) {
+					font-size: 13px;
+				}
+			}
+		}
+	}
+
+	// #close-terminal {
+	// 	@include displayFlex(center, center);
+	// 	position: absolute;
+	// 	left: 10px;
+	// 	top: 10px;
+	// 	background: transparent;
+	// 	border: none;
+	// 	background-color: #ff605c;
+	// 	border-radius: 100%;
+	// 	width: 16px;
+	// 	height: 16px;
+
+	// 	> span {
+	// 		font-size: 13px;
+	// 		width: 16px;
+	// 		height: 16px;
+	// 		display: none;
+	// 		pointer-events: none;
+	// 	}
+
+	// 	@include onHoverFocus {
+	// 		> span {
+	// 			display: block;
+	// 		}
+	// 	}
+	// }
+
+	&__code {
+		width: 100%;
+
+		&--main {
+			width: 100%;
+			border: none;
+			color: white;
+			background-color: rgba(0, 0, 0, 0.7);
+			height: 320px;
+			max-height: 440px;
+			width: 710px;
+			padding: 0;
+			padding: 10px;
+			margin: 0;
+			outline: none;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			resize: vertical;
+
+			&:focus {
+				outline: none;
+			}
+
+			@include mediaQuery("max", 1440px) {
+				height: 280px;
+				max-height: 380px;
+				width: 564px;
+			}
+			@include mediaQuery("max", 1140px) {
+				max-height: 280px;
+				width: 446px;
+			}
+		}
+	}
+}

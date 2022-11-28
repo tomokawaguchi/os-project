@@ -1,0 +1,13 @@
+@use "../partials/mixin" as *;
+
+.main-screen {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	.app-wrapper {
+		@include displayFlex(center, center);
+		width: 100%;
+		height: 90%;
+	}
+}

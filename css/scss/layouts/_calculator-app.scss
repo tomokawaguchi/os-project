@@ -1,0 +1,84 @@
+@use "../partials/mixin" as *;
+
+.calculator-app {
+	&__inner {
+		@include displayFlex(unset, unset);
+		flex-direction: column;
+		position: relative;
+		background-color: #383838;
+		border-radius: 12px;
+	}
+
+	&__top {
+		position: relative;
+
+		#result {
+			font-size: 35px;
+			text-align: right;
+			padding: 25px 8px 8px;
+			color: #dadada;
+			font-weight: 100;
+			height: 40px;
+		}
+	}
+
+	&__bottom {
+		background-color: #383838;
+		border-bottom-right-radius: 12px;
+		border-bottom-left-radius: 12px;
+
+		.buttons-wrapper {
+			display: grid;
+			grid-template-columns: repeat(4, 60px);
+			grid-template-rows: repeat(5, 50px);
+
+			button {
+				font-size: 20px;
+				color: #dadada;
+				background-color: #696969;
+				border-color: #696969;
+				border-width: thin;
+				cursor: pointer;
+			}
+
+			button:nth-of-type(4n) {
+				border-left: none;
+			}
+
+			button:nth-of-type(16),
+			button:nth-of-type(17),
+			button:nth-of-type(18) {
+				border-bottom: none;
+			}
+
+			button:nth-of-type(3),
+			button:nth-of-type(7),
+			button:nth-of-type(11),
+			button:nth-of-type(15),
+			button:nth-of-type(18) {
+				background-color: #ff9f0b;
+				border-right: none;
+			}
+
+			button:nth-of-type(1),
+			button:nth-of-type(2) {
+				background-color: #4c4c4c;
+			}
+
+			.large-btn {
+				&--horizontal {
+					grid-column: span 2;
+
+					&--zero {
+						grid-column: 1/3;
+						border-bottom-left-radius: 12px;
+					}
+				}
+			}
+
+			button:last-of-type {
+				border-bottom-right-radius: 12px;
+			}
+		}
+	}
+}
