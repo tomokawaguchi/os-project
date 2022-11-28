@@ -1,5 +1,5 @@
 @use "../partials/mixin" as *;
-@import "../partials/animations";
+@import "../partials/palette";
 
 .close-app {
 	@include displayFlex(center, center);
@@ -8,7 +8,7 @@
 	top: 10px;
 	background: transparent;
 	border: none;
-	background-color: #ff605c;
+	background-color: $red;
 	border-radius: 100%;
 	width: 16px;
 	height: 16px;

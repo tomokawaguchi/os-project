@@ -4,15 +4,14 @@ export const handleCalculator = () => {
 	const clearButton = document.querySelector(".clear-btn");
 	const positiveNegativeButton = document.querySelector(".positive-negative-btn");
 	let currentFullStr = document.querySelector("#result").innerHTML;
-	let typeStr = "n";
 
 	// Check if string is ready to calculate
 	const isReadyToCalc = (str) => {
 		// It includes operator, the last char is number
-		return /[\+\-\*\/]/g.test(str) && typeStr.slice(-1) === "n";
+		return /[\+\-\*\/]/g.test(str) && /[0-9]/g.test(str.charAt(str.length - 1));
 	};
 
-	// Calculating the math
+	// Calculating the math with string values
 	const calculate = (str) => {
 		return new Function(`return ${str}`)();
 	};
@@ -35,24 +34,20 @@ export const handleCalculator = () => {
 				return;
 			}
 
-			typeStr += event.target.dataset.type;
-
 			// For when the operator was clicked at first
 			if (/[\+\*\/]/g.test(clickedValue) && currentFullStr === "0") {
 				currentFullStr === "0";
-				typeStr = "n";
+
 				return;
 			}
 			// If '-' is the starting value, add it to currentFullStr accordingly
 			if (clickedValue === "-" && currentFullStr === "0") {
 				currentFullStr = "-";
 
-				typeStr = "o";
 				return;
 			}
 			// No operator or decimal allowed after '-'
-			if (/[\+\-\*\/\.]/g.test(clickedValue) && currentFullStr === "-") {
-				typeStr = "o";
+			if (/[\+\-\*\/]/g.test(clickedValue) && currentFullStr === "-") {
 				return;
 			}
 
@@ -60,30 +55,20 @@ export const handleCalculator = () => {
 			if (/[\+\-\*\/]/g.test(currentFullStr) && currentFullStr[0] !== "-") {
 				const lastChar = clickedValue;
 				const secondLastChar = currentFullStr[currentFullStr.length - 1];
-				const lastTwoChars = lastChar + secondLastChar;
+				const lastTwoChars = secondLastChar + lastChar;
 
+				// Current and last char in currentFullStr are both operat
 				if (/[\+\-\*\/]/g.test(clickedValue) && /[\+\-\*\/]/g.test(currentFullStr[currentFullStr.length - 1])) {
 					if (lastTwoChars === "--") {
 						currentFullStr = currentFullStr.slice(0, -1);
 						currentFullStr += "+";
-						return;
-					} else if (lastTwoChars === "++") {
-						currentFullStr = currentFullStr.slice(0, -1);
-						currentFullStr += "+";
-						return;
-					} else if (lastTwoChars === "-+" || lastTwoChars === "+-") {
-						currentFullStr = currentFullStr.slice(0, -1);
-						currentFullStr += "-";
 					} else if (lastTwoChars === "*-" || lastTwoChars === "/-") {
 						currentFullStr += clickedValue;
 					} else {
-						typeStr = typeStr.replace("o", "");
 						// Remove the last one first before adding the new one
 						currentFullStr = currentFullStr.slice(0, -1);
 						currentFullStr += clickedValue;
 					}
-
-					typeStr = typeStr.slice(0, -1);
 					return;
 				}
 			}
@@ -117,14 +102,12 @@ export const handleCalculator = () => {
 			const final = calculate(currentFullStr);
 			updateScreen(final);
 			currentFullStr = final.toString();
-			typeStr = new Array(currentFullStr.length).fill("n").join("");
 		}
 	});
 
 	// Handle clear - AC
 	clearButton.addEventListener("click", () => {
 		currentFullStr = "0";
-		typeStr = "";
 		updateScreen(currentFullStr);
 	});
 

@@ -1,11 +1,12 @@
 @use "../partials/mixin" as *;
+@import "../partials/palette";
 
 .calculator-app {
 	&__inner {
 		@include displayFlex(unset, unset);
 		flex-direction: column;
 		position: relative;
-		background-color: #383838;
+		background-color: $dark-black;
 		border-radius: 12px;
 	}
 
@@ -16,14 +17,14 @@
 			font-size: 35px;
 			text-align: right;
 			padding: 25px 8px 8px;
-			color: #dadada;
+			color: $light-grey;
 			font-weight: 100;
 			height: 40px;
 		}
 	}
 
 	&__bottom {
-		background-color: #383838;
+		background-color: $dark-black;
 		border-bottom-right-radius: 12px;
 		border-bottom-left-radius: 12px;
 
@@ -34,9 +35,9 @@
 
 			button {
 				font-size: 20px;
-				color: #dadada;
-				background-color: #696969;
-				border-color: #696969;
+				color: $light-grey;
+				background-color: $grey;
+				border-color: $grey;
 				border-width: thin;
 				cursor: pointer;
 			}
@@ -56,13 +57,13 @@
 			button:nth-of-type(11),
 			button:nth-of-type(15),
 			button:nth-of-type(18) {
-				background-color: #ff9f0b;
+				background-color: $calc-orange;
 				border-right: none;
 			}
 
 			button:nth-of-type(1),
 			button:nth-of-type(2) {
-				background-color: #4c4c4c;
+				background-color: $calc-black;
 			}
 
 			.large-btn {

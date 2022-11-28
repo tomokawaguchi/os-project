@@ -1,4 +1,5 @@
 @use "../partials/mixin" as *;
+@import "../partials/palette";
 
 .top-bar {
 	&__wrapper {
@@ -10,7 +11,7 @@
 		&:before {
 			position: absolute;
 			content: "";
-			background-color: #dadada;
+			background-color: $light-grey;
 			left: 0;
 			right: 0;
 			top: 0;

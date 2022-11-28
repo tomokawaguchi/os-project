@@ -1,5 +1,5 @@
 @use "../partials/mixin" as *;
-@import "../partials/animations";
+@import "../partials/palette";
 
 .toggle-btn {
 	@include buttonReset;
@@ -22,5 +22,5 @@
 // active state
 .toggleOn .toggle-btn {
 	justify-content: flex-end;
-	background-color: #8d128f;
+	background-color: $purple;
 }
