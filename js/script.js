@@ -90,14 +90,14 @@ menuItems.forEach((item, index) => {
 
 		submenuData.forEach((submenuInfo) => {
 			const submenuTitle = submenuInfo.submenu;
-			const hasSubSubMenu = submenuInfo.hasChildren;
+			const hasSubSubMenu = submenuInfo.subSubMenu ? true : false;
 			const classList = hasSubSubMenu ? "list-modal__item hasChildren" : "list-modal__item";
 
 			createElement("li", submenuTitle, classList, navSubmenuUl);
 			const parentLi = document.querySelectorAll(".list-modal__item.hasChildren");
 
 			const subSubMenuData = [];
-			if (submenuInfo.subSubMenu.length > 0) {
+			if (submenuInfo.subSubMenu && submenuInfo.subSubMenu.length > 0) {
 				subSubMenuData.push(submenuInfo.subSubMenu);
 				createElement("div", "", "sub-modal modal-box", parentLi[parentLi.length - 1]);
 				const subModal = document.querySelectorAll(".sub-modal");

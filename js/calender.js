@@ -128,17 +128,6 @@ export const handleCalender = () => {
 };
 
 export const handleCalculator = () => {
-	// adjustFontSize() --> when results are too long/large
-	// clearScreen() --> wipe out the displayed value
-	// convertPositiveNegative() --> Interchange the values between positive/negative
-	// handleModular() -->
-	// handleDivision() -->
-	// handleMultiply()
-	// handleAddition()
-	// handleSubtraction()
-	// handleEqual()
-	// handleDecimal()
-
 	const buttons = document.querySelectorAll(".buttons-wrapper button");
 	buttons.forEach((button) => {
 		button.addEventListener("click", (event) => {
