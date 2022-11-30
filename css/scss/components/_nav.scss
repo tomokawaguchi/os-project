@@ -1,0 +1,106 @@
+@use "../partials/mixin" as *;
+@import "../partials/palette";
+
+.nav {
+	height: 100%;
+	margin-left: 15px;
+
+	&__list {
+		@include resetListStylings;
+		@include displayFlex(unset, center);
+		height: 100%;
+
+		&__item {
+			@include displayFlex(unset, center);
+			height: 100%;
+			padding: 0 15px;
+			cursor: pointer;
+
+			.custom-icon {
+				pointer-events: none;
+			}
+
+			// Active class
+			&.active-list {
+				position: relative;
+
+				// Common list stylings
+				ul {
+					@include resetListStylings;
+					@include displayFlex(unset, unset);
+					flex-direction: column;
+					padding: 5px;
+
+					> li {
+						position: relative;
+						font-size: 14px;
+						padding: 7px;
+						border-radius: 5px;
+						cursor: pointer;
+					}
+				}
+
+				// Modal box common styling
+				.modal-box {
+					@include transitionEaseInOut(0.2s);
+					@include displayFlex(unset, unset);
+					flex-direction: column;
+					position: absolute;
+					color: black;
+					background-color: $light-grey;
+					border-radius: 5px;
+					box-shadow: 0 0px 7px 0px rgb(0 0 0 / 40%);
+					z-index: 1;
+				}
+
+				// For the modal
+				.list-modal {
+					top: 30px;
+					left: 0;
+					min-width: 250px;
+					min-height: 200px;
+
+					&__item {
+						&.hasChildren {
+							&:after {
+								@include customIcon;
+								content: "\E814";
+								position: absolute;
+								font-size: 16px;
+								right: 5px;
+								width: 14px;
+								height: 100%;
+							}
+
+							.sub-modal {
+								left: 240px;
+								top: 5px;
+								min-height: 70px;
+								min-width: 200px;
+								display: none;
+							}
+
+							@include onHoverFocus {
+								.sub-modal {
+									display: block;
+
+									&__item {
+										@include onHoverFocus {
+											color: white;
+											background-color: #8d128f;
+										}
+									}
+								}
+							}
+						}
+
+						@include onHoverFocus {
+							color: white;
+							background-color: #8d128f;
+						}
+					}
+				}
+			}
+		}
+	}
+}

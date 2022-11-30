@@ -1,0 +1,89 @@
+@use "../partials/mixin" as *;
+@import "../partials/palette";
+
+.app-list-wrapper {
+	@include displayFlex(center, unset);
+	@include transitionEaseInOut(0.3s);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	cursor: pointer;
+
+	.app-list {
+		@include visibilityOff;
+		@include transitionEaseInOut(0.3s);
+		@include resetListStylings;
+		@include displayFlex(center, unset);
+		display: inline-flex;
+		background-color: $light-grey;
+		border-radius: 10px;
+		transform: translateY(0);
+
+		&__item {
+			@include transitionEaseInOut(0.3s);
+			@include backgroundImgProperties;
+			position: relative;
+			width: 60px;
+			height: 60px;
+			cursor: pointer;
+			z-index: 1;
+
+			.app-name {
+				@include visibilityOff;
+				@include transitionEaseInOut(0.3s);
+				display: inline-flex;
+				position: absolute;
+				font-size: 14px;
+				background-color: $light-grey;
+				padding: 5px 10px;
+				left: -5px;
+				right: 0;
+				top: -30px;
+				width: fit-content;
+				border-radius: 5px;
+				margin: 0 auto;
+
+				&:after {
+					@include visibilityOff;
+					display: block;
+					position: absolute;
+					content: "";
+					bottom: -4px;
+					left: 0;
+					right: 0;
+					width: 0px;
+					height: 0px;
+					border-left: 5px solid transparent;
+					border-right: 5px solid transparent;
+					border-top: 5px solid $light-grey;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}
+
+// Active app list
+.active-app-list {
+	.app-list {
+		@include visibilityOn;
+		position: relative;
+		transform: translateY(-5px);
+		z-index: 4;
+
+		> .app-list__item:hover {
+			transform: scale(1.2);
+			transform-origin: bottom;
+
+			> .app-name {
+				@include visibilityOn;
+
+				// For the triangle
+				&:after {
+					@include visibilityOn;
+				}
+			}
+		}
+	}
+}
