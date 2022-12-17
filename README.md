@@ -1,5 +1,8 @@
 # Mock OS Project
 
+![Project snapshot](https://github.com/tomokawaguchi/os-project/blob/main/images/fakeOS-snapshot.png?raw=true)
+
+
 I have developed a mock screen of mac OS. I have setup a laptop frame with CSS and develop apps and other items inside of it. Since this is a mock laptop screen, it is optimised for the screen size of 900px and larger only.
 
 As mac laptop behaves, on hover over the bottom of screen, the app deck will show up. Upon click each app, the respective app will open up. At the header, there are 3 layers of drop down menu available.The menu won't trigger anything, however you can navigate down to the sub-sub menu level on hover over the menu. The menu data is populated programmatically with the local data, which is stored in data.js.
