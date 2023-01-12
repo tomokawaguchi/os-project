@@ -65,7 +65,7 @@ The Calendar app always opens up with the current month screen as default. On th
 
 The main math of calculator app is handled with `new Function()()` constructor so that it can conduct math operations on a string passed. Each calculator button has been set with click event listener and it has been ensured to cover the various cases. The html file of the calculator.html is injected via `new XMLHttpRequest()` method.
 
-**3. Terminal**
+**3. Terminal App**
 
 This app is the simplest with text field, which allows you to enter the text. The size adjustment is covered to some extent within the mock mac screen/laptop. The html file of the terminal.html is injected via `new XMLHttpRequest()` method.
 
