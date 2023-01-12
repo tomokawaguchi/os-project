@@ -1,6 +1,6 @@
 # Mock OS Project
 
-:link:  https://google-api-books.tomok.dev
+:link:  https://macos.tomok.dev/
 
 ![Project snapshot](https://github.com/tomokawaguchi/os-project/blob/main/images/fakeOS-snapshot.png?raw=true)
 
