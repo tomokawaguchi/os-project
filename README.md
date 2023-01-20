@@ -2,7 +2,7 @@
 
 :link:  https://macos.tomok.dev/
 
-![Project snapshot](https://github.com/tomokawaguchi/os-project/blob/main/images/fakeOS-snapshot.png?raw=true)
+<img src="https://github.com/tomokawaguchi/os-project/blob/main/images/fakeOS-snapshot.png" width="auto" height="400" />
 
 ## Project Brief
 ### Aims
